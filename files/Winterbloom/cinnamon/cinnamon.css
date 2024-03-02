@@ -342,7 +342,7 @@ StScrollBar StButton#vhandle:active {
 .menu {
   color: #d9d9d9;
   font-weight: 300;
-  border-radius: 20px;
+  border-radius: 3px;
   background-gradient-direction: vertical;
   background-gradient-start: rgba(12, 67, 150, 0.9);
   background-gradient-end: rgba(41, 131, 204, 0.9);
