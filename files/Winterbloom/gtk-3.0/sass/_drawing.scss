@@ -211,7 +211,7 @@
     color: $header_fg;
     outline-color: transparentize($header_fg, 0.7);
     border-color: if($variant=='light', $header_button_border, $header_button_border);
-    background-color: $button_active_bg;
+    background-color: scale-color($color: rgba(28, 164, 227, 0.8), $saturation: 50%, $lightness: 50%);
   }
 
   @else if $t==header-insensitive {
@@ -229,9 +229,37 @@
   //
   // header-bar insensitive pushed button
   //
-    color: transparentize($fg_color, 0.2);
+    color: transparentize($header_fg, 0.2);
     border-color: transparentize($button_active_border, 0.15);
     background-color: transparentize($button_active_bg, 0.05);
+  }
+
+  @else if $t==title-normal {
+    //
+    // normal title-bar button (minimize, maximize, ...)
+    //
+    color: $title_fg;
+    @include button(undecorated);
+    }
+
+  @else if $t==title-hover {
+  //
+  // hovered title-bar button (minimize, maximize, ...)
+  //
+    color: $title_fg;
+    outline-color: transparentize($title_fg, 0.7);
+    border-color: $header_button_border;
+    background-color: $header_button_bg;
+  }
+
+  @else if $t==title-active {
+  //
+  // pushed title-bar button (minimize, maximize, ...)
+  //
+    color: $title_fg;
+    outline-color: transparentize($title_fg, 0.7);
+    border-color: if($variant=='light', $header_button_border, $header_button_border);
+    background-color: $button_active_bg;
   }
 
   @else if $t==osd {

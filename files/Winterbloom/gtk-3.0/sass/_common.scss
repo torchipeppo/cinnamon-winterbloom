@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @function gtkalpha($c,$a) {
   @return unquote("alpha(#{$c},#{$a})");
 }
@@ -925,8 +927,12 @@ headerbar,
   border-radius: 0;
   border-color: opacify($header_border, 1);
 
-  color: $header_fg;
-  background-color: opacify($header_bg, 1);
+  color: $title_fg;
+  background-image: linear-gradient(to bottom, rgba(0, 40, 255, 0.8), rgb(28, 164, 227));
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.8), rgb(28, 164, 227));
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.8), rgb(72, 148, 211));
+  // background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.8) 30%, rgba(180, 206, 255, 1));
+  // background-image: linear-gradient(to bottom, rgba(12, 67, 150, 0.8), rgba(41, 131, 204, 1));
   box-shadow: inset 0 1px $header_highlight;
 
   .csd & {  // Transparent header-bars only in csd windows
@@ -935,7 +941,10 @@ headerbar,
   }
 
   &:backdrop {
-    color: transparentize($header_fg, 0.4);
+    color: transparentize($title_fg, 0.4);
+    background-image: linear-gradient(to bottom, 
+      lighten(rgba(0, 0, 255, 0.8), 0%), 
+      transparentize(darken(rgb(28, 164, 227), 20%), 0.1));
   }
 
   .title {
@@ -3187,14 +3196,14 @@ headerbar,
     margin: 0;
     transition: none;
 
-    @include button(undecorated);
+    @include button(title-normal);
     background-color: transparentize($header_bg, 1);
 
     &:hover {
-      @include button(header-hover);
+      @include button(title-hover);
     }
     &:active, &:checked {
-      @include button(header-active);
+      @include button(title-active);
     }
 
     &.close, &.maximize, &.minimize {

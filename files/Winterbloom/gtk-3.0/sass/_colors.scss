@@ -40,13 +40,14 @@ $insensitive_bg_color: if($variant == 'light', mix($bg_color, $base_color, 40%),
 
 $dim_label_fg_color: transparentize($fg_color, 0.35);
 
-$header_bg: if($variant == 'light', darken($bg_color, 5%), darken($bg_color, 5%));
+$header_bg: if($variant == 'light', lighten(rgb(180, 206, 255), 5%), darken($bg_color, 5%));
 $header_bg_backdrop: if($variant == 'dark', lighten($header_bg, 1.5%), lighten($header_bg, 3%));
 
 $header_border: if($variant == 'light', #BDBDBD, darken($header_bg, 4%));
-$header_highlight: if($variant == 'light', #EEEEEE, #373737);
+$header_highlight: rgb(180, 206, 255);
 
-$header_fg: $fg_color;
+$header_fg: #002050;
+$title_fg: white;
 
 $menu_selected_bg_color: if($variant == 'light', transparentize(black, 0.9), transparentize(white, 0.9));
 
@@ -83,7 +84,7 @@ $header_entry_border: if($variant == 'dark', transparentize(darken($header_bg, 1
 
 $button_bg: if($variant == 'light', lighten($bg_color, 2%), lighten($base_color, 2%));
 $button_border: $borders_color;
-$button_active_bg: transparentize(black, 0.85);
+$button_active_bg: scale-color($color: rgb(28, 164, 227), $saturation: 50%, $lightness: 50%);
 $button_active_border: darken($button_border, 10%);
 
 $header_button_bg: if($variant == 'dark', transparentize(lighten($header_bg, 22%), 0.6), transparentize($button_bg, 0.1));

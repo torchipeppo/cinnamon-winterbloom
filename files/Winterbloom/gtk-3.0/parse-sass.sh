@@ -1,4 +1,4 @@
 #! /bin/bash
 
-pysassc ./sass/gtk.scss gtk.css
-pysassc ./sass/gtk-dark.scss gtk-dark.css
+sass ./sass/gtk.scss gtk.css
+sass ./sass/gtk-dark.scss gtk-dark.css
