@@ -2637,7 +2637,7 @@ filechooserbutton:drop(active) {
 //
 .sidebar {
   border-style: none;
-  background-color: lighten($bg_color, 2%);
+  background-color: lighten($bg_color, 2%); // <---  I left this arrow here, but it's been like 2 months and I forgot why :P
 
   @at-root %sidebar_left,
   &:dir(ltr),
@@ -3186,7 +3186,7 @@ headerbar,
   }
 
   button.titlebutton {
-    $_wm_backdrop_icon_color: if($variant == 'light', darken($wm_icon_unfocused_bg, 5%), lighten($wm_icon_unfocused_bg, 5%));
+    $_wm_backdrop_icon_color: lighten($wm_icon_unfocused_bg, 5%);
 
     min-width: 20px;
     min-height: 20px;
@@ -3217,12 +3217,18 @@ headerbar,
     }
 
     &.close {
-      color: $selected_fg_color;
-      @include draw_circle($selected_bg_color);
+      color: $selected_bg_color;
+      @include draw_circle(rgb(240,255,255));
 
-      &:backdrop { @include draw-circle($_wm_backdrop_icon_color); }
-      &:hover { @include draw-circle(lighten($selected_bg_color, 5%)); }
-      &:active { @include draw-circle(darken($selected_bg_color, 5%)); }
+      &:backdrop {
+        color: rgb(20, 60, 255);
+        @include draw-circle($_wm_backdrop_icon_color);
+      }
+      &:hover { @include draw-circle(lighten(rgb(240,255,255), 5%)); }
+      &:active {
+        color: white;
+        @include draw-circle(lighten($selected_bg_color, 10%));
+      }
     }
 
     &.maximize,
@@ -3232,11 +3238,12 @@ headerbar,
       }
       &:hover,
       &:hover:backdrop {
-        color: $fg_color;
+        color: transparentize(black, 0.13);
         @include draw-circle($wm_button_hover_bg);
       }
       &:active,
       &:active:backdrop {
+        color: $title_fg;
         @include draw-circle($wm_button_active_bg);
       }
     }
